@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <h2> SignUp </h2> 
+      <div class="input-box">
+        <input type="text" placeholder="Enter your name" id="name" required onkeypress="return allowOnlyLetters(event,this);">
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Enter your email" id="email" required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Create password" id="pwd" required>
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Phone Number" id="mbl" required>
+      </div>
+      <div class="policy">
+        <h3>What is your gender?</h3>
+      </div>
+      <div class="policy">
+        <input type="radio" name="gender" value="male" required class="input-radio">
+        <h3>Male</h3>
+        <input type="radio" name="gender" value="Female" required class="input-radio">
+        <h3>Female</h3>
+      </div>
+      <div class="policy input-lbl">
+        <h3 for="cars">Select list of sports you are intrested in:</h3>
+      </div>
+      <div class="policy">
+        <select name="sports" title="sports" class="input-select" id="mySelect">
+		  <option value="0">--Select--</option>
+          <option value="Cricket">Cricket</option>
+          <option value="Football">Football</option>
+          <option value="Hockey">Hockey</option>
+          <option value="Volleyball">Volleyball</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <br /><br />
+      <div class="policy">
+        <input type="checkbox">
+        <h3>I accept all terms & condition</h3>
+      </div>
+      <div class="input-box button">
+        <input type="button" value="Register Now" onclick="submit();">
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a href="#">Login now</a></h3>
+      </div>
+  </div>
+  <script>
+    function submit() {
+      var name = document.getElementById("name").value;
+	  var email = document.getElementById("email").value;
+	  var pwd = document.getElementById("pwd").value;
+	  var mbl = document.getElementById("mbl").value;
+	  var ele = document.getElementsByName('gender');
+	  var gen = "";
+    if (!name || name.length < 5) {
+      alert("Please enter minimum for 5 characters long for name");
+      return;
+    }
+    if (!email || email.slice(-10) !== '@gmail.com') {
+      alert("please enter valid gmail");
+      return;
+    }
+    if (!pwd || pwd.length < 8) {
+      alert("Please enter minimum for 8 characters long for password");
+      return;
+    }
+    if (!/^\d+$/.test(mbl) || mbl.length !== 10) {
+      alert("please enter valid mobile number");
+      return;
+    }
+	  for (i = 0; i < ele.length; i++) {
+                if (ele[i].checked)
+				  gen = ele[i].value;
+                    
+            }
+	  console.log("name: " + name);
+	  console.log("email: " + email);
+	  console.log("paddword: " + pwd);
+	  console.log("mobile number: " + mbl);
+	  console.log("Gender: " + gen);
+	  console.log("Sports: " + document.getElementById("mySelect").value);
+    }
+    function allowOnlyLetters(e, t)   
+{    
+   if (window.event)    
+   {    
+      var charCode = window.event.keyCode;    
+   }    
+   else if (e)   
+   {    
+      var charCode = e.which;    
+   }    
+   else { return true; }    
+   if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))    
+       return true;    
+   else  
+   {      
+      return false;    
+   }           
+}   
+  </script>
+</body>
+
+</html>
